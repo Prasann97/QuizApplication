@@ -1,0 +1,14 @@
+<div *ngIf="successMessage != null" class="alert alert-success" role="alert">{{ successMessage }}
+    <button type="button" class="close" (click)="dismissAlert()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+
+<div class="quiz-container">
+    <mat-card *ngFor="let quizName of quizNames" class="quiz-card">
+      <div class="quiz-content">
+        <div class="quiz-name">{{ quizName }}</div>
+        <button mat-raised-button color="primary" class="start-button" (click)="startQuiz(quizName)">Start</button>
+      </div>
+    </mat-card>
+  </div>

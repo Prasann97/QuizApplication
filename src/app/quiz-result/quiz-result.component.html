@@ -1,0 +1,8 @@
+<div class="quiz-container">
+    <mat-card *ngFor="let quizName of quizNames" class="quiz-card">
+      <div class="quiz-content">
+        <div class="quiz-name">{{ quizName }}</div>
+        <button mat-raised-button color="primary" class="start-button" (click)="showResult(quizName)">Show Result</button>
+      </div>
+    </mat-card>
+  </div>

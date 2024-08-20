@@ -1,0 +1,39 @@
+.question-card-container {
+    display: flex;
+    flex-direction: column; /* Stack cards vertically */
+    gap: 16px; /* Space between cards */
+    padding: 16px;
+  }
+  
+  .question-card {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  
+  .marks-badge {
+    background-color: #ff4081;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 14px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .submit-container {
+    margin-top: 16px;
+    text-align: center;
+  }
+  
+  .custom-textarea {
+    width: 100%; /* Adjust as needed */
+    max-width: 100%; /* Ensure it doesn't exceed the container's width */
+  }
+  
+  /* If you want a specific column width, you can use pixel or percentage values */
+  .custom-textarea {
+    width: 100%; /* Adjust to the desired width (e.g., 300px or 100%) */
+    max-width: 300px; /* Example width, adjust to fit your needs */
+  }

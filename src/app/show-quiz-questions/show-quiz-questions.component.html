@@ -1,0 +1,52 @@
+<div *ngIf="successMessage" class="alert alert-success" role="alert">Quiz Created Successfully
+    <button type="button" class="close" (click)="dismissAlert()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+
+<div *ngIf="errorMessage" class="alert alert-danger" role="alert">Please select the Questions
+    <button type="button" class="close" (click)="dismissAlert()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+
+<div class="card-container">
+    <mat-card *ngFor="let question of quizQuestions" class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{ question.question }}</mat-card-title>
+        <mat-card-subtitle>Type: {{ question.questionType }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-checkbox 
+          class="select-checkbox" 
+          [(ngModel)]="question.selected"
+          aria-label="Select"
+        ></mat-checkbox>
+      <mat-card-content  *ngIf="question.questionType === 'Multiple Choice'">
+        <p>Answer Options:</p>
+        <ul>
+          <li *ngFor="let option of question.answerOptions">{{ option }}</li>
+        </ul>
+        <p>Answer: {{ question.answer }}</p>
+        <p>Marks: {{ question.marks }}</p>
+      </mat-card-content>
+      <mat-card-content *ngIf="question.questionType === 'True/False'">
+        <p>Answer Options:</p>
+        <ul>
+          <li>True</li>
+          <li>False</li>
+        </ul>
+        <p>Answer: {{ question.answer }}</p>
+        <p>Marks: {{ question.marks }}</p>
+      </mat-card-content>
+      <mat-card-content *ngIf="question.questionType !== 'True/False' && question.questionType !== 'Multiple Choice'">
+      <p>Answer: {{ question.answer }}</p>
+        <p>Marks: {{ question.marks }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="form-group">
+    <label for="quizName">Quiz Name</label>
+    <input type="text" id="quizName" class="form-control" [(ngModel)]="quizName" required />
+  </div>
+  
+  <button type="button" class="btn btn-primary" (click)="submitSelected()">Submit Selected</button>

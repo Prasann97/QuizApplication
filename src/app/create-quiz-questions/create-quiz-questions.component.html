@@ -1,0 +1,63 @@
+<div class="container">
+    <h2>Create Question</h2>
+    <br>
+    <div *ngIf="successMessage" class="alert alert-success" role="alert">Quiz Question Added Successfully
+        <button type="button" class="close" (click)="dismissAlert()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+    <form #quizQuestionForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Question</label>
+        <input type="text" id="question" class="form-control" name="question" [(ngModel)]="quizQuestion.question" required>
+      </div>
+      <div class="form-group">
+        <label for="questionType">Question Type</label>
+        <select id="questionType" class="form-control" name="questionType" [(ngModel)]="quizQuestion.questionType" required>
+          <option *ngFor="let type of questionTypes" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+
+      <div *ngIf="quizQuestion.questionType === 'Multiple Choice'" class="form-group">
+        <!-- <div *ngFor="let option of quizQuestion.answerOptions; let i = index"> -->
+          <label>Option 1:</label>
+          <input type="text" class="form-control" id="answerOptions[0]"
+          name="answerOptions[0]" [(ngModel)]="quizQuestion.answerOptions[0]" placeholder="Option 1" />
+          <br>
+          <label>Option 2:</label>
+          <input type="text" class="form-control" id="answerOptions[1]"
+          name="answerOptions[1]" [(ngModel)]="quizQuestion.answerOptions[1]" placeholder="Option 2" />
+          <br>
+          <label>Option 3:</label>
+          <input type="text" class="form-control" id="answerOptions[2]"
+          name="answerOptions[2]" [(ngModel)]="quizQuestion.answerOptions[2]" placeholder="Option 3" />
+          <br>
+          <label>Option 4:</label>
+          <input type="text" class="form-control" id="answerOptions[0]"
+          name="answerOptions[3]" [(ngModel)]="quizQuestion.answerOptions[3]" placeholder="Option 4" />
+          <br>
+        <!-- </div> -->
+      </div>
+
+      <div *ngIf="quizQuestion.questionType === 'True/False'" class="form-group">
+        <label for="answer">Answer</label>
+        <select id="questionType" class="form-control" name="questionType" [(ngModel)]="quizQuestion.answer" required>
+            <option value="True">True</option>
+            <option value="False">False</option>
+          </select>
+      </div>
+
+    <div *ngIf="quizQuestion.questionType !== 'True/False'" class="form-group">
+        <div class="form-group">
+            <label for="answer">Answer</label>
+            <input id="answer" class="form-control" name="answer" [(ngModel)]="quizQuestion.answer"/>
+        </div>
+    </div>
+
+      <div class="form-group">
+        <label for="marks">Marks</label>
+        <input type="number" id="marks" class="form-control" name="marks" [(ngModel)]="quizQuestion.marks"/>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="quizQuestionForm.invalid">Create Question</button>
+    </form>
+  </div>

@@ -1,0 +1,29 @@
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between cards */
+    padding: 20px;
+  }
+  
+  .quiz-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  
+  .quiz-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .quiz-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .start-button {
+    margin-left: auto; /* Push the button to the right */
+  }

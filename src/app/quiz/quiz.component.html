@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="question-card-container" *ngIf="selectedQuizQuestions.length > 0">
+        <mat-card class="question-card">
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Name</mat-label>
+              <input matInput [(ngModel)]="userName" placeholder="Enter your name" />
+            </mat-form-field>
+        </mat-card>
+          
+        <mat-card class="question-card">
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Email</mat-label>
+              <input matInput [(ngModel)]="userEmail" placeholder="Enter your email" type="email" />
+            </mat-form-field>
+        </mat-card>
+        <input hidden matInput [(ngModel)]="quizName" class="custom-textarea"/>
+      <mat-card *ngFor="let question of selectedQuizQuestions" class="question-card">
+        <mat-card-header>
+          <mat-card-title>{{ question.question }}</mat-card-title>
+          <div class="marks-badge">{{ question.marks }} Marks</div>
+          <input hidden matInput [(ngModel)]="question.marks" class="custom-textarea"/>
+        </mat-card-header>
+        <mat-card-content>
+          <p *ngIf="question.questionType === 'Multiple Choice' || question.questionType === 'True/False'">
+            Answer Options:
+            <mat-radio-group *ngIf="question.questionType === 'Multiple Choice'" [(ngModel)]="question.selectedAnswer">
+              <mat-radio-button *ngFor="let option of question.answerOptions" [value]="option">
+                {{ option }}
+              </mat-radio-button>
+            </mat-radio-group>
+            <mat-radio-group *ngIf="question.questionType === 'True/False'" [(ngModel)]="question.selectedAnswer">
+              <mat-radio-button value="True">True</mat-radio-button>
+              <mat-radio-button value="False">False</mat-radio-button>
+            </mat-radio-group>
+          </p>
+          <p *ngIf="question.questionType !== 'True/False' && question.questionType !== 'Multiple Choice'">
+            Answer:
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Answer</mat-label>
+              <textarea matInput [(ngModel)]="question.selectedAnswer" class="custom-textarea"></textarea>
+            </mat-form-field>
+          </p>
+        </mat-card-content>
+      </mat-card>
+      <div class="submit-container">
+        <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+      </div>
+    </div>
+  </div>
+  

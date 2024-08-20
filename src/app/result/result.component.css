@@ -1,0 +1,33 @@
+.submission-card-container {
+    margin: 20px;
+  }
+  
+  .response-card {
+    margin-bottom: 10px;
+  }
+  
+  /* .marks-badge {
+    font-weight: bold;
+    color: green;
+  } */
+  
+  .marks-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: green; /* Orange background color */
+    color: white; /* White text color */
+    padding: 4px 8px; /* Padding to make it look nice */
+    border-radius: 4px; /* Rounded corners */
+    font-weight: bold; /* Make text bold */
+  }
+  .marks1-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red; /* Orange background color */
+    color: white; /* White text color */
+    padding: 4px 8px; /* Padding to make it look nice */
+    border-radius: 4px; /* Rounded corners */
+    font-weight: bold; /* Make text bold */
+  }

@@ -1,0 +1,30 @@
+<div class="submission-card-container">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let submission of submissionData">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Submission for {{ submission.name }} - {{ submission.email }}
+          </mat-panel-title>
+          <mat-panel-description>
+            Obtained Marks: {{ submission.obtainedMarks }}/{{ submission.totalMarks }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+  
+        <div *ngFor="let response of submission.responses" class="response-card">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>{{ response.question }}</mat-card-title>
+              <div *ngIf="response.selectedAnswer == response.answer" class="marks-badge">Marks: {{ response.marks }}</div>
+              <div *ngIf="response.selectedAnswer != response.answer" class="marks1-badge">Marks: 0</div>
+            </mat-card-header>
+            <mat-card-content>
+              <p>Selected Answer: {{ response.selectedAnswer }}</p>
+              <p>Correct Answer: {{ response.answer }}</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <br/>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  
